@@ -2,6 +2,7 @@ import logging
 from pprint import pprint
 
 import requests
+from requests.api import request
 
 from telebot.db import SQL
 from telebot.models import Message
@@ -76,9 +77,15 @@ def register_db(sql:SQL, data):
     msg.add(data["chat"]["id"], data["message_id"], data["text"])
 
 def send_txt(data, tkn):
-    send_message(
-        f"👋 Hola amigo {data['chat']['first_name']}! en que te puedo ayudar?",
-        data["chat"]["id"], tkn)
+    web_dolar = requests.get('https://criptoya.com/api/dolar')
+    web_dolar = web_dolar.json()
+    
+    if data['text'] == '/dolar':
+        send_message(f'precio dolar: {web_dolar["oficial"]}$ARG', data["chat"]["id"], tkn)
+    else:    
+        send_message(
+            f"👋 Hola amigo {data['chat']['first_name']}! en que te puedo ayudar?",
+            data["chat"]["id"], tkn)
 
 def register_message(sql: SQL, data, tkn):
     """

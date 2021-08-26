@@ -1,4 +1,5 @@
 import logging
+from os import urandom
 from pprint import pprint
 
 import requests
@@ -79,9 +80,14 @@ def register_db(sql:SQL, data):
 def send_txt(data, tkn):
     web_dolar = requests.get('https://criptoya.com/api/dolar')
     web_dolar = web_dolar.json()
-    
+    gato = requests.get("https://api.thecatapi.com/v1/images/search")
+    gato = gato.json()
+    gato = dict(gato[0])
+     
     if data['text'] == '/dolar':
         send_message(f'precio dolar: {web_dolar["oficial"]}$ARG', data["chat"]["id"], tkn)
+    elif data['text'] == '/gato':
+        send_message(f"Gato: {gato['url']}", data["chat"]["id"], tkn)
     else:    
         send_message(
             f"👋 Hola amigo {data['chat']['first_name']}! en que te puedo ayudar?",

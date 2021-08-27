@@ -1,0 +1,17 @@
+1. Que significa el `ON CONFLICT REPLACE` en la tabla `message` y que pasaria si no estuviera?
+    
+    Cuando se produce un conflicto con las restricciones de las "Primary Key", el argumento REPLACE
+    dado a ON CONFLICT, eliminara las filas preexistentes que causan el conflicto antes de añadir la fila actual.
+
+    Si `ON CONFLICT REPLACE` no estuviera, cuando el usuario tratase de editar el mensaje que escribio,
+    `message` produciria un `Key Error`, ya que el crearia una fila con contenido diferente pero con los mismos `ID`
+    violando las restricciones de las `Primary Key's`.
+
+2. Cuales serian las ventajas y desventajas de pasar `telegram.py` a un paradigma orientado a objectos?
+    
+    Podria proveer facilidad al programa para ser mantenido o reutilizado en otros bots, pero a su vez complejizaria
+    un de forma innecesaria un programa simple.
+    
+3. Hay algo que pueda generalizarse en `models.py` ?
+
+4. Si solo **ciertos** usuarios pudieran hablar con el bot, que habria que modificar para que eso sea posible?

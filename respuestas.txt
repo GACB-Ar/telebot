@@ -22,5 +22,6 @@
 
 4. Si solo **ciertos** usuarios pudieran hablar con el bot, que habria que modificar para que eso sea posible?
    
-    Para que ciertos usuarios puedan hablar con el bot hay que crear una condicional a la función get_chat_id en telegram.py para 
-    que solo devuelva el chat_id del usuario especifico que cumpla con la condicion
+    Para que solo ciertos usuarios puedan interactuar con el bot, se debería guardar el chat_id de cada uno en la base de datos.
+    Luego, desde la función get_updates debería haber un condicional que verifique que el chat_id del mensaje que se recibe sea uno
+    de los que se almacena en la base de datos. En caso afirmativo, el bot responde. Caso contrario el bot descarta el mensaje.

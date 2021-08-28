@@ -4,15 +4,21 @@
     dado a ON CONFLICT, eliminara las filas preexistentes que causan el conflicto antes de añadir la fila actual.
 
     Si `ON CONFLICT REPLACE` no estuviera, cuando el usuario tratase de editar el mensaje que escribio,
-    `message` produciria un `Key Error`, ya que el crearia una fila con contenido diferente pero con los mismos `ID`
+    `message` produciria un `Key Error`, ya que se crearia una fila con contenido diferente pero con los mismos `ID`
     violando las restricciones de las `Primary Key's`.
 
 2. Cuales serian las ventajas y desventajas de pasar `telegram.py` a un paradigma orientado a objectos?
     
     Podria proveer facilidad al programa para ser mantenido o reutilizado en otros bots, pero a su vez complejizaria
      de forma innecesaria un programa simple.
+    Otra ventaja sería que no haría falta pasar el token del bot como argumento en cada función que lo utilice, sino que el token 
+    podría ser un atributo del objeto y sería posible acceder a él desde cualquier método de la clase.
     
 3. Hay algo que pueda generalizarse en `models.py` ?
+
+   Podría hacerse una clase padre de la que heredan las dos clases que ya existen. De esta manera, la clase padre puede contener métodos 
+   y atributos que sean comunes a las dos clases. Luego cada clase que hereda de la clase padre, puede utilizar los métodos de la clase padre, 
+   o redefinir los que sean necesarios. 
 
 4. Si solo **ciertos** usuarios pudieran hablar con el bot, que habria que modificar para que eso sea posible?
    

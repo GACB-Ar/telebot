@@ -10,8 +10,11 @@
 2. Cuales serian las ventajas y desventajas de pasar `telegram.py` a un paradigma orientado a objectos?
     
     Podria proveer facilidad al programa para ser mantenido o reutilizado en otros bots, pero a su vez complejizaria
-    un de forma innecesaria un programa simple.
+     de forma innecesaria un programa simple.
     
 3. Hay algo que pueda generalizarse en `models.py` ?
 
 4. Si solo **ciertos** usuarios pudieran hablar con el bot, que habria que modificar para que eso sea posible?
+   
+    Para que ciertos usuarios puedan hablar con el bot hay que modificar la función get_chat_id en telegram.py para 
+    que solo devuelva el chat_id del usuario especifico que hablará con el bot
